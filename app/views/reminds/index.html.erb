@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+<%= render 'form' %>
+
+<%= link_to 'Back', reminds_path %>
+<h1>Current Reminders</h1>
+
+<table>
+  <thead>
+    <tr>
+      
+      <th>Medication</th>
+      <th>Dosage</th>
+    <!--   <th>Med</th> -->
+      <th>Time</th>
+      <th>Frequence</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody >
+    <% @reminds.each do |remind| %>
+      <%if current_user  && current_user.id == remind.user_id %>
+        
+        <td><%= remind.medication %></td> 
+        <td><%= remind.dosage %></td>
+        <td><%= remind.time.strftime("%I:%M %p") %></td>
+        <td><%= remind.frequence %></td>
+        <td><%= link_to 'Show', remind %></td>
+        <td><%= link_to 'Edit', edit_remind_path(remind) %></td>
+        <td><%= link_to 'Destroy', remind, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%end%>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<button><%= link_to 'New Remind', new_remind_path %></button>

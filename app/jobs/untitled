@@ -1,0 +1,7 @@
+<div class="field">
+    <%= f.label :time %><br>
+    <%= f.datetime_select :time, {ampm: true, minute_step: 15}  %>
+  </div>
+
+
+  config.active_record.default_timezone = 'Eastern Time (US & Canada)'

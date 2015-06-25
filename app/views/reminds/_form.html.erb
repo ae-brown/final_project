@@ -1,0 +1,44 @@
+<%= form_for(@remind) do |f| %>
+  <% if @remind.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@remind.errors.count, "error") %> prohibited this remind from being saved:</h2>
+
+      <ul>
+      <% @remind.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+  <div class="field">
+    <%= f.label :medication %><br>
+    <%= f.text_field :medication %>
+  </div>
+  <div class="field">
+    <%= f.label :dosage %><br>
+    <%= f.text_field :dosage %>
+  </div>
+  <div class="field">
+    <%= f.label :med_id %><br>
+    <%= f.number_field :med_id %>
+  </div>
+  <div class="field">
+    <%= f.time_select :time, {ampm: true, minute_step: 15} %>
+  </div>
+  <div class="field">
+    <%= f.date_select :time %>
+  </div>
+  <div class="field">
+    <%= f.label :frequence %><br>
+    <%= f.number_field :frequence %>
+  </div>
+  <div class="field">
+    <%= f.label :cel_phone %><br>
+    <%= f.text_field :cel_phone %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
